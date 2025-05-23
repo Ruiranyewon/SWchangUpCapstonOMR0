@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 제목 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="나의 뷰티 타겟을 설정해보세요"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <View android:layout_width="match_parent" android:layout_height="24dp" />
+
+        <!-- 설명 텍스트 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="아직 테스트 결과가 없습니다."
+            android:textSize="14sp" />
+
+        <View android:layout_width="match_parent" android:layout_height="8dp" />
+
+        <!-- 테스트 하러 가기 버튼 -->
+        <TextView
+            android:id="@+id/startTestButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="테스트 하러 가기 >"
+            android:textColor="#000000"
+            android:background="@drawable/rounded_orange_gradient" />
+
+        <View android:layout_width="match_parent" android:layout_height="32dp" />
+
+        <!-- 일반 추천 보기 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="일반 추천 보기"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <View android:layout_width="match_parent" android:layout_height="8dp" />
+
+        <!-- 추천 항목 1 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:text="> 맞춤 메이크업 제품 추천 보러가기"
+            android:background="@drawable/rounded_orange_gradient"
+            android:textSize="14sp" />
+
+        <View android:layout_width="match_parent" android:layout_height="12dp" />
+
+        <!-- 추천 항목 2 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:text="> 전문가가 추천하는 필승 화장 조합 보러가기"
+            android:background="@drawable/rounded_orange_gradient"
+            android:textSize="14sp" />
+
+        <View android:layout_width="match_parent" android:layout_height="12dp" />
+
+        <!-- 추천 항목 3 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:text="> 나에게 꼭 맞는 기초 루틴 추천 받기"
+            android:background="@drawable/rounded_orange_gradient"
+            android:textSize="14sp" />
+    </LinearLayout>
+</ScrollView>
