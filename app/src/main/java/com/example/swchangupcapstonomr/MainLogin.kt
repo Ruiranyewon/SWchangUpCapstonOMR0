@@ -1,5 +1,9 @@
 package com.example.swchangupcapstonomr
 
+import androidx.compose.ui.draw.clip
+
+import androidx.compose.material.icons.filled.Notifications
+
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.LazyColumn
 import android.os.Bundle
@@ -422,11 +426,198 @@ fun FeedContent() {
 
 @Composable
 fun TargetScreen() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+    var showResult by remember { mutableStateOf(false) }
+
+    Column(modifier = Modifier.fillMaxSize()) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Button(
+                onClick = { showResult = false },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = if (!showResult) Color(0xFFFFA726) else Color.LightGray
+                )
+            ) {
+                Text("초기 페이지 보기")
+            }
+            Spacer(modifier = Modifier.width(8.dp))
+            Button(
+                onClick = { showResult = true },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = if (showResult) Color(0xFFFFA726) else Color.LightGray
+                )
+            ) {
+                Text("결과 페이지 보기")
+            }
+        }
+
+        if (showResult) {
+            TargetScreenWithResult()
+        } else {
+            TargetScreenWithoutResult()
+        }
+    }
+}
+
+@Composable
+fun TargetScreenWithoutResult() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
+            .padding(16.dp)
     ) {
-        Text("Target Screen")
+        Text("나의 뷰티 타겟을 설정해보세요", style = MaterialTheme.typography.headlineMedium)
+        Spacer(modifier = Modifier.height(24.dp))
+        Text("아직 테스트 결과가 없습니다.", style = MaterialTheme.typography.bodyMedium)
+        Spacer(modifier = Modifier.height(8.dp))
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(50.dp)
+                .background(
+                    brush = Brush.horizontalGradient(
+                        colors = listOf(Color(0xFFFFECB3), Color(0xFFFF8A65))
+                    ),
+                    shape = RoundedCornerShape(8.dp)
+                )
+                .clickable { /* TODO: 테스트 페이지 이동 */ },
+            contentAlignment = Alignment.Center
+        ) {
+            Text("테스트 하러 가기 >", color = Color.Black)
+        }
+
+        Spacer(modifier = Modifier.height(32.dp))
+        Text("일반 추천 보기", style = MaterialTheme.typography.titleMedium)
+        Spacer(modifier = Modifier.height(8.dp))
+
+        listOf(
+            "> 맞춤 메이크업 제품 추천 보러가기",
+            "> 전문가가 추천하는 필승 화장 조합 보러가기",
+            "> 나에게 꼭 맞는 기초 루틴 추천 받기"
+        ).forEach {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp)
+                    .background(
+                        brush = Brush.horizontalGradient(
+                            colors = listOf(Color(0xFFFFECB3), Color(0xFFFF8A65))
+                        ),
+                        shape = RoundedCornerShape(8.dp)
+                    )
+                    .padding(start = 16.dp),
+                contentAlignment = Alignment.CenterStart
+            ) {
+                Text(it, style = MaterialTheme.typography.bodyMedium)
+            }
+            Spacer(modifier = Modifier.height(12.dp))
+        }
+    }
+}
+
+@Composable
+fun TargetScreenWithResult() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
+            .padding(16.dp)
+    ) {
+        Text("타겟 페이지", style = MaterialTheme.typography.headlineMedium)
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // 테스트 결과 카드
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .border(1.dp, Color(0xFFFFA726), RoundedCornerShape(8.dp))
+                .padding(16.dp)
+        ) {
+            Text("홍길동 님의 바우만 피부 테스트 결과", style = MaterialTheme.typography.bodyMedium)
+            Text("DSNW", style = MaterialTheme.typography.headlineLarge)
+            Text(
+                "자세한 설명 보기 >",
+                modifier = Modifier.align(Alignment.End),
+                style = MaterialTheme.typography.bodySmall
+            )
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .border(1.dp, Color(0xFFFFA726), RoundedCornerShape(8.dp))
+                .padding(16.dp)
+        ) {
+            Text("홍길동 님의 커스널 컬러 테스트 결과", style = MaterialTheme.typography.bodyMedium)
+            Text("봄 웜 브라이트 - 브라이트", style = MaterialTheme.typography.headlineSmall)
+            Text(
+                "자세한 설명 보기 >",
+                modifier = Modifier.align(Alignment.End),
+                style = MaterialTheme.typography.bodySmall
+            )
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // 추천 제품/영상 영역
+        val sections = listOf(
+            "DSNW 추천 제품",
+            "봄 웜 브라이트 / 추천 제품",
+            "피부 별 추천 메이크업",
+            "스타일 별 추천 메이크업"
+        )
+        val isVideoSection = listOf(false, false, true, true)
+
+        sections.forEachIndexed { i, title ->
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 4.dp)
+                    .background(
+                        brush = Brush.horizontalGradient(
+                            colors = if (i % 2 == 0)
+                                listOf(Color(0xFFFFCDD2), Color(0xFFFFECB3))
+                            else
+                                listOf(Color(0xFFFFF9C4), Color(0xFFFFE0B2))
+                        ),
+                        shape = RoundedCornerShape(4.dp)
+                    )
+                    .padding(12.dp)
+            ) {
+                Text(title, style = MaterialTheme.typography.titleSmall)
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(64.dp)
+                            .background(Color.LightGray),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(if (isVideoSection[i]) "영상\n썸네일" else "상품\n이미지", style = MaterialTheme.typography.bodySmall)
+                    }
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Column {
+                        Text(
+                            if (isVideoSection[i]) "유튜브(or 전문가 이름)" else "판매업체",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = Color.Gray
+                        )
+                        Text("상품명~~~~~ 또는 영상명", style = MaterialTheme.typography.bodyMedium)
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -443,109 +634,79 @@ fun CartScreen() {
     val shippingFee = 3000
     val finalPrice = totalPrice - productDiscount - couponDiscount + shippingFee
 
-    var selectedItem by remember { mutableStateOf(3) } // Cart index
-    val items = listOf(
-        BottomNavItem.Feed,
-        BottomNavItem.Target,
-        BottomNavItem.Home,
-        BottomNavItem.Cart,
-        BottomNavItem.MyPage
-    )
-
-    Scaffold(
-        bottomBar = {
-            NavigationBar {
-                items.forEachIndexed { index, item ->
-                    NavigationBarItem(
-                        selected = selectedItem == index,
-                        onClick = { selectedItem = index },
-                        icon = { Icon(item.icon, contentDescription = item.label) },
-                        label = { Text(item.label) }
-                    )
-                }
-            }
-        }
-    ) { innerPadding ->
-        Box(
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
+            .padding(16.dp)
+    ) {
+        Text("장바구니", style = MaterialTheme.typography.headlineMedium)
+        Divider(
+            color = Color.LightGray,
+            thickness = 1.dp,
+            modifier = Modifier.padding(vertical = 16.dp)
+        )
+        // 전체선택/선택삭제 Row
+        Row(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-                .background(Color.White)
+                .fillMaxWidth()
+                .padding(vertical = 8.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(16.dp)
-            ) {
-                Text("장바구니", style = MaterialTheme.typography.headlineMedium)
-                Divider(
-                    color = Color.LightGray,
-                    thickness = 1.dp,
-                    modifier = Modifier.padding(vertical = 16.dp)
-                )
-                // 전체선택/선택삭제 Row
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 8.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Checkbox(checked = false, onCheckedChange = {})
-                        Text("전체선택(1/2)", style = MaterialTheme.typography.bodyMedium)
-                    }
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Checkbox(checked = false, onCheckedChange = {})
+                Text("전체선택(1/2)", style = MaterialTheme.typography.bodyMedium)
+            }
+            Text(
+                text = "선택삭제",
+                style = MaterialTheme.typography.bodyMedium,
+                color = Color.Black
+            )
+        }
+        Divider(color = Color.Black.copy(alpha = 0.6f), thickness = 1.dp)
+        Spacer(modifier = Modifier.height(12.dp))
+        // Use LazyColumn with .weight(1f)
+        LazyColumn(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth()
+                .background(Color.White, shape = RoundedCornerShape(16.dp))
+                .padding(16.dp)
+        ) {
+            items(cartItems) { item ->
+                Column {
                     Text(
-                        text = "선택삭제",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = Color.Black
+                        text = "판매업체 배송상품",
+                        style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.padding(bottom = 8.dp)
                     )
+                    CartItemCard(
+                        checked = item.checked,
+                        storeName = item.storeName,
+                        productName = item.productName,
+                        quantity = item.quantity,
+                        originalPrice = item.originalPrice,
+                        salePrice = item.salePrice
+                    )
+                    Divider(color = Color.Black.copy(alpha = 0.6f), thickness = 1.dp)
+                    Spacer(modifier = Modifier.height(8.dp))
                 }
-                Divider(color = Color.Black.copy(alpha = 0.6f), thickness = 1.dp)
-                Spacer(modifier = Modifier.height(12.dp))
-                // Use LazyColumn with .weight(1f)
-                LazyColumn(
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxWidth()
-                        .background(Color.White, shape = RoundedCornerShape(16.dp))
-                        .padding(16.dp)
-                ) {
-                    items(cartItems) { item ->
-                        Column {
-                            Text(
-                                text = "판매업체 배송상품",
-                                style = MaterialTheme.typography.bodySmall,
-                                modifier = Modifier.padding(bottom = 8.dp)
-                            )
-                            CartItemCard(
-                                checked = item.checked,
-                                storeName = item.storeName,
-                                productName = item.productName,
-                                quantity = item.quantity,
-                                originalPrice = item.originalPrice,
-                                salePrice = item.salePrice
-                            )
-                            Divider(color = Color.Black.copy(alpha = 0.6f), thickness = 1.dp)
-                            Spacer(modifier = Modifier.height(8.dp))
-                        }
-                    }
-                }
-                Spacer(modifier = Modifier.height(16.dp))
-                Divider(
-                    color = Color.LightGray,
-                    thickness = 1.dp,
-                    modifier = Modifier.padding(vertical = 16.dp)
-                )
-                CartSummary(
-                    totalPrice = totalPrice,
-                    productDiscount = productDiscount,
-                    couponDiscount = couponDiscount,
-                    shippingFee = shippingFee,
-                    finalPrice = finalPrice
-                )
             }
         }
+        Spacer(modifier = Modifier.height(16.dp))
+        Divider(
+            color = Color.LightGray,
+            thickness = 1.dp,
+            modifier = Modifier.padding(vertical = 16.dp)
+        )
+        CartSummary(
+            totalPrice = totalPrice,
+            productDiscount = productDiscount,
+            couponDiscount = couponDiscount,
+            shippingFee = shippingFee,
+            finalPrice = finalPrice
+        )
     }
 }
 data class CartItem(
@@ -723,167 +884,143 @@ fun CartScreenPreview() {
 
 @Composable
 fun HomeScreen() {
-    Scaffold(
-        bottomBar = {
-            val items = listOf(
-                BottomNavItem.Feed,
-                BottomNavItem.Target,
-                BottomNavItem.Home,
-                BottomNavItem.Cart,
-                BottomNavItem.MyPage
-            )
-            var selectedItem by remember { mutableStateOf(2) }
-            NavigationBar {
-                items.forEachIndexed { index, item ->
-                    NavigationBarItem(
-                        selected = selectedItem == index,
-                        onClick = { selectedItem = index },
-                        icon = { Icon(item.icon, contentDescription = item.label) },
-                        label = { Text(item.label) }
-                    )
-                }
-            }
-        }
-    ) { innerPadding ->
-        Box(
+    Box(
+        modifier = Modifier
+            .fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
             modifier = Modifier
-                .padding(innerPadding)
-                .fillMaxSize(),
-            contentAlignment = Alignment.Center
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Column(
+            // 광고 배너
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .height(150.dp)
+                    .background(Color.LightGray),
+                contentAlignment = Alignment.Center
             ) {
-                // 광고 배너
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(150.dp)
-                        .background(Color.LightGray),
-                    contentAlignment = Alignment.Center
+                Text("광고 or 추천 제품", style = MaterialTheme.typography.bodyLarge)
+            }
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            // 12개 카테고리 (3행 4열)
+            val categories = listOf(
+                "기초케어", "선케어", "베이스 메이크업", "립 메이크업",
+                "아이 메이크업", "마스크 팩", "클렌징", "뷰티 소품",
+                "향수", "헤어케어", "바디케어", "네일"
+            )
+
+            for (row in 0 until 3) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    Text("광고 or 추천 제품", style = MaterialTheme.typography.bodyLarge)
-                }
-
-                Spacer(modifier = Modifier.height(24.dp))
-
-                // 12개 카테고리 (3행 4열)
-                val categories = listOf(
-                    "기초케어", "선케어", "베이스 메이크업", "립 메이크업",
-                    "아이 메이크업", "마스크 팩", "클렌징", "뷰티 소품",
-                    "향수", "헤어케어", "바디케어", "네일"
-                )
-
-                for (row in 0 until 3) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceEvenly
-                    ) {
-                        for (col in 0 until 4) {
-                            val index = row * 4 + col
-                            Box(
-                                modifier = Modifier
-                                    .size(70.dp)
-                                    .border(2.dp, Color(0xFFFFA726), RoundedCornerShape(12.dp)),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Text("(${categories[index]})", style = MaterialTheme.typography.bodySmall, color = Color.DarkGray)
-                            }
+                    for (col in 0 until 4) {
+                        val index = row * 4 + col
+                        Box(
+                            modifier = Modifier
+                                .size(70.dp)
+                                .border(2.dp, Color(0xFFFFA726), RoundedCornerShape(12.dp)),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text("(${categories[index]})", style = MaterialTheme.typography.bodySmall, color = Color.DarkGray)
                         }
                     }
-                    Spacer(modifier = Modifier.height(12.dp))
                 }
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                // 추천 보기 배너 1
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(50.dp)
-                        .background(
-                            brush = Brush.horizontalGradient(
-                                colors = listOf(Color(0xFFFFECB3), Color(0xFFFF8A65))
-                            ),
-                            shape = RoundedCornerShape(8.dp)
-                        ),
-                    contentAlignment = Alignment.CenterStart
-                ) {
-                    Text(
-                        text = "> 맞춤 메이크업 제품 추천 보러가기",
-                        modifier = Modifier.padding(start = 16.dp),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = Color.Black
-                    )
-                }
-
                 Spacer(modifier = Modifier.height(12.dp))
+            }
 
-                // 추천 보기 배너 2
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(50.dp)
-                        .background(
-                            brush = Brush.horizontalGradient(
-                                colors = listOf(Color(0xFFFFECB3), Color(0xFFFF8A65))
-                            ),
-                            shape = RoundedCornerShape(8.dp)
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // 추천 보기 배너 1
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp)
+                    .background(
+                        brush = Brush.horizontalGradient(
+                            colors = listOf(Color(0xFFFFECB3), Color(0xFFFF8A65))
                         ),
-                    contentAlignment = Alignment.CenterStart
-                ) {
-                    Text(
-                        text = "> 전문가가 추천하는 필승 화장 조합 보러가기",
-                        modifier = Modifier.padding(start = 16.dp),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = Color.Black
-                    )
-                }
+                        shape = RoundedCornerShape(8.dp)
+                    ),
+                contentAlignment = Alignment.CenterStart
+            ) {
+                Text(
+                    text = "> 맞춤 메이크업 제품 추천 보러가기",
+                    modifier = Modifier.padding(start = 16.dp),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = Color.Black
+                )
+            }
 
-                Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(12.dp))
 
-                // 추천 보기 배너 3
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(50.dp)
-                        .background(
-                            brush = Brush.horizontalGradient(
-                                colors = listOf(Color(0xFFFFECB3), Color(0xFFFF8A65))
-                            ),
-                            shape = RoundedCornerShape(8.dp)
+            // 추천 보기 배너 2
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp)
+                    .background(
+                        brush = Brush.horizontalGradient(
+                            colors = listOf(Color(0xFFFFECB3), Color(0xFFFF8A65))
                         ),
-                    contentAlignment = Alignment.CenterStart
-                ) {
-                    Text(
-                        text = "> 나에게 꼭 맞는 기초 루틴 추천 받기",
-                        modifier = Modifier.padding(start = 16.dp),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = Color.Black
-                    )
-                }
+                        shape = RoundedCornerShape(8.dp)
+                    ),
+                contentAlignment = Alignment.CenterStart
+            ) {
+                Text(
+                    text = "> 전문가가 추천하는 필승 화장 조합 보러가기",
+                    modifier = Modifier.padding(start = 16.dp),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = Color.Black
+                )
+            }
 
-                Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(12.dp))
 
-                // 채팅 상담 말풍선
+            // 추천 보기 배너 3
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp)
+                    .background(
+                        brush = Brush.horizontalGradient(
+                            colors = listOf(Color(0xFFFFECB3), Color(0xFFFF8A65))
+                        ),
+                        shape = RoundedCornerShape(8.dp)
+                    ),
+                contentAlignment = Alignment.CenterStart
+            ) {
+                Text(
+                    text = "> 나에게 꼭 맞는 기초 루틴 추천 받기",
+                    modifier = Modifier.padding(start = 16.dp),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = Color.Black
+                )
+            }
+
+            Spacer(modifier = Modifier.height(24.dp))
+
+            // 채팅 상담 말풍선
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(end = 8.dp),
+                contentAlignment = Alignment.BottomEnd
+            ) {
                 Box(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(end = 8.dp),
-                    contentAlignment = Alignment.BottomEnd
+                        .size(40.dp)
+                        .border(1.dp, Color.Gray, shape = RoundedCornerShape(50))
+                        .background(Color.White, shape = RoundedCornerShape(50)),
+                    contentAlignment = Alignment.Center
                 ) {
-                    Box(
-                        modifier = Modifier
-                            .size(40.dp)
-                            .border(1.dp, Color.Gray, shape = RoundedCornerShape(50))
-                            .background(Color.White, shape = RoundedCornerShape(50)),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text("?", color = Color.Black)
-                    }
+                    Text("?", color = Color.Black)
                 }
             }
         }
@@ -894,10 +1031,141 @@ fun HomeScreen() {
 @Composable
 fun ProfileScreen() {
     Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        modifier = Modifier
+            .fillMaxSize()
     ) {
-        Text("Profile Screen")
+        // Background gradient on top half of screen (or coupon icon area)
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(400.dp)
+                .clip(RoundedCornerShape(bottomStart = 36.dp, bottomEnd = 36.dp))
+                .background(
+                    Brush.verticalGradient(
+                        colors = listOf(
+                            Color(0xFFFFA242),
+                            Color(0xFFFF962E),
+                            Color(0xFFFFFD8E).copy(alpha = 0.6f),
+                            Color(0xFFFD7171)
+                        )
+                    )
+                )
+        )
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            // Header
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color.White)
+                    .padding(16.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text("마이페이지", style = MaterialTheme.typography.headlineMedium)
+                Icon(Icons.Default.Notifications, contentDescription = "알림")
+            }
+
+            // Profile card
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = Color.White)
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(Icons.Default.AccountCircle, contentDescription = "Profile", modifier = Modifier.size(48.dp))
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text("홍길동", style = MaterialTheme.typography.titleMedium)
+                    }
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text("테스트 결과", style = MaterialTheme.typography.bodySmall)
+                    Text("DSNW", style = MaterialTheme.typography.headlineSmall)
+                    Text("봄 웜 브라이트 - 브라이트", style = MaterialTheme.typography.bodyMedium)
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        "자세한 설명 보기 >",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = Color.Gray,
+                        modifier = Modifier.align(Alignment.End)
+                    )
+                }
+            }
+
+            // Coupon section
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
+                    .height(200.dp)
+                    .border(1.dp, Color(0xFFFFA726), RoundedCornerShape(16.dp)),
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = Color.White)
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxWidth()
+                            .padding(start = 16.dp, top = 12.dp, bottom = 4.dp),
+                        contentAlignment = Alignment.TopStart
+                    ) {
+                        Column {
+                            Text("쿠폰", style = MaterialTheme.typography.headlineSmall)
+                            Spacer(modifier = Modifier.height(24.dp))
+                        }
+                    }
+
+                    Divider(color = Color(0xFFEEEEEE), thickness = 1.dp)
+
+                    Row(
+                        horizontalArrangement = Arrangement.SpaceAround,
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxWidth()
+                    ) {
+                        listOf("최근 본 제품", "찜한 상품", "팔로우", "리뷰 쓰기").forEach {
+                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                Icon(Icons.Default.Star, contentDescription = it, modifier = Modifier.size(32.dp))
+                                Text(it, style = MaterialTheme.typography.bodySmall)
+                            }
+                        }
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            // 메뉴 목록
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color.White)
+                    .padding(18.dp)
+            ) {
+                val menuItems = listOf("주문내역", "00페이지", "00페이지", "메이크업 테스트", "컨설턴트 신청")
+                menuItems.forEachIndexed { index, text ->
+                    Text(
+                        text,
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.padding(vertical = 12.dp)
+                    )
+                    // Add divider after first "00페이지" and before "메이크업 테스트"
+                    if (text == "00페이지" && index + 1 < menuItems.size && menuItems[index + 1] == "메이크업 테스트") {
+                        Divider(color = Color(0xFFEEEEEE), thickness = 1.dp)
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -916,6 +1184,23 @@ fun FeedScreenPreview() {
         FeedScreen()
     }
 }
+
+@Preview(showBackground = true)
+@Composable
+fun ProfileScreenPreview() {
+    SWchangUpCapstonOMRTheme {
+        ProfileScreen()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun TargetScreenPreview() {
+    SWchangUpCapstonOMRTheme {
+        TargetScreen()
+    }
+}
+
 data class FeedPost(
     val userName: String,
     val profile: String,
