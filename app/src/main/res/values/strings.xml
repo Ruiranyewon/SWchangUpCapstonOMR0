@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">SWchangUpCapstonOMR</string>
+    <string name="q1">세안 후 피부가 당기는 느낌이 있나요?</string>
+    <string name="q2">하루 중 피부가 종종 건조하고 각질이 일어나나요?</string>
+    <string name="q3">크림을 바르지 않으면 얼굴이 쉽게 메마르나요?</string>
+    <string name="q4">피부가 푸석해 보이거나 유분이 거의 없나요?</string>
+    <string name="q5">피지를 거의 느끼지 못하고, 화장이 쉽게 들뜨나요?</string>
+
+    <string name="q6">새로운 화장품을 사용할 때 자극을 느끼는 경우가 많나요?</string>
+    <string name="q7">날씨나 환경이 바뀌면 피부 트러블이 생기나요?</string>
+    <string name="q8">세안 후 붉어짐이 자주 생기나요?</string>
+    <string name="q9">피부가 가렵거나 따가운 적이 자주 있나요?</string>
+    <string name="q10">향료나 색소가 들어간 제품에 예민하게 반응하나요?</string>
+
+    <string name="q11">피부에 기미나 잡티가 쉽게 생기나요?</string>
+    <string name="q12">여드름 후 색소침착이 오래가는 편인가요?</string>
+    <string name="q13">햇볕에 노출되면 피부가 쉽게 어두워지거나 붉어지나요?</string>
+    <string name="q14">선크림을 바르지 않으면 바로 피부톤이 변하나요?</string>
+    <string name="q15">피부에 고르게 색이 아닌 얼룩덜룩한 부분이 있나요?</string>
+
+    <string name="q16">웃거나 찡그릴 때 생긴 주름이 쉽게 사라지지 않나요?</string>
+    <string name="q17">눈가, 입가에 잔주름이 보이나요?</string>
+    <string name="q18">피부에 탄력이 부족하고, 처지는 느낌이 있나요?</string>
+    <string name="q19">나이에 비해 노화가 빨리 오는 느낌인가요?</string>
+    <string name="q20">피부가 얇고 무너지기 쉬운 느낌이 드나요?</string>
 </resources>

@@ -95,7 +95,7 @@
                     <ImageView
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/ic_cleansing" />  <!-- 아이콘 파일 -->
+                        android:src="@drawable/ic_facialfoam" />  <!-- 아이콘 파일 -->
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -105,113 +105,245 @@
                         android:textColor="#444" />
                 </LinearLayout>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:background="@drawable/category_box"
+                    android:orientation="vertical"
                     android:gravity="center"
-                    android:text="마스크 팩"
-                    android:textColor="#444"
-                    android:textSize="12sp" />
+                    android:background="@drawable/category_box">
 
-                <TextView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/category_box"
-                    android:gravity="center"
-                    android:text="바디케어"
-                    android:textColor="#444"
-                    android:textSize="12sp" />
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_facemask" />  <!-- 아이콘 파일 -->
 
-                <TextView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/category_box"
-                    android:gravity="center"
-                    android:text="베이스"
-                    android:textColor="#444"
-                    android:textSize="12sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="마스크팩"
+                        android:textSize="12sp"
+                        android:textColor="#444" />
+                </LinearLayout>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:background="@drawable/category_box"
+                    android:orientation="vertical"
                     android:gravity="center"
-                    android:text="립메이크업"
-                    android:textColor="#444"
-                    android:textSize="12sp" />
+                    android:background="@drawable/category_box">
 
-                <TextView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/category_box"
-                    android:gravity="center"
-                    android:text="아이메이크업"
-                    android:textColor="#444"
-                    android:textSize="12sp" />
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_cleansing" />  <!-- 아이콘 파일 -->
 
-                <TextView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/category_box"
-                    android:gravity="center"
-                    android:text="네일"
-                    android:textColor="#444"
-                    android:textSize="12sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="바디케어"
+                        android:textSize="12sp"
+                        android:textColor="#444" />
+                </LinearLayout>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:background="@drawable/category_box"
+                    android:orientation="vertical"
                     android:gravity="center"
-                    android:text="향수"
-                    android:textColor="#444"
-                    android:textSize="12sp" />
+                    android:background="@drawable/category_box">
 
-                <TextView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/category_box"
-                    android:gravity="center"
-                    android:text="헤어케어"
-                    android:textColor="#444"
-                    android:textSize="12sp" />
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_cushion" />  <!-- 아이콘 파일 -->
 
-                <TextView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/category_box"
-                    android:gravity="center"
-                    android:text="이너뷰티"
-                    android:textColor="#444"
-                    android:textSize="12sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="베이스"
+                        android:textSize="12sp"
+                        android:textColor="#444" />
+                </LinearLayout>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:background="@drawable/category_box"
+                    android:orientation="vertical"
                     android:gravity="center"
-                    android:text="뷰티도구"
-                    android:textColor="#444"
-                    android:textSize="12sp" />
+                    android:background="@drawable/category_box">
 
-                <TextView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/category_box"
-                    android:gravity="center"
-                    android:text="이너뷰티"
-                    android:textColor="#444"
-                    android:textSize="12sp" />
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_lip" />  <!-- 아이콘 파일 -->
 
-                <TextView
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="립메이크업"
+                        android:textSize="12sp"
+                        android:textColor="#444" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:background="@drawable/category_box"
+                    android:orientation="vertical"
                     android:gravity="center"
-                    android:text="남성"
-                    android:textColor="#444"
-                    android:textSize="12sp" />
+                    android:background="@drawable/category_box">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_eyemakeup" />  <!-- 아이콘 파일 -->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="아이메이크업"
+                        android:textSize="12sp"
+                        android:textColor="#444" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/category_box">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_nailcare" />  <!-- 아이콘 파일 -->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="네일"
+                        android:textSize="12sp"
+                        android:textColor="#444" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/category_box">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_perfume" />  <!-- 아이콘 파일 -->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="향수"
+                        android:textSize="12sp"
+                        android:textColor="#444" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/category_box">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_hair" />  <!-- 아이콘 파일 -->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="헤어케어"
+                        android:textSize="12sp"
+                        android:textColor="#444" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/category_box">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_inner" />  <!-- 아이콘 파일 -->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="이너뷰티"
+                        android:textSize="12sp"
+                        android:textColor="#444" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/category_box">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_brush" />  <!-- 아이콘 파일 -->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="뷰티도구"
+                        android:textSize="12sp"
+                        android:textColor="#444" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/category_box">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_sanitary" />  <!-- 아이콘 파일 -->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="구강/위생"
+                        android:textSize="12sp"
+                        android:textColor="#444" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/category_box">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_male" />  <!-- 아이콘 파일 -->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="남성"
+                        android:textSize="12sp"
+                        android:textColor="#444" />
+                </LinearLayout>
 
             </GridLayout>
 
