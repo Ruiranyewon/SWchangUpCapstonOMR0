@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:id="@+id/scroll_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:gravity="center_horizontal">
+
+            <!-- 광고 배너 -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="#D3D3D3"
+                android:layout_gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="광고 or 추천 제품"
+                    android:textSize="16sp"
+                    android:layout_gravity="center" />
+            </FrameLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="24dp" />
+
+            <!-- 12개 카테고리 (3행 4열) -->
+            <GridLayout
+                android:layout_width="390dp"
+                android:layout_height="wrap_content"
+                android:alignmentMode="alignMargins"
+                android:columnCount="5"
+                android:rowCount="3"
+                android:useDefaultMargins="true">
+
+                <!-- 카테고리 박스 12개 -->
+                <LinearLayout
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/category_box">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_skincare" />  <!-- 아이콘 파일 -->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="기초케어"
+                        android:textSize="12sp"
+                        android:textColor="#444" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/category_box">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_suncare" />  <!-- 아이콘 파일 -->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="선케어"
+                        android:textSize="12sp"
+                        android:textColor="#444" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/category_box">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_cleansing" />  <!-- 아이콘 파일 -->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="클렌징"
+                        android:textSize="12sp"
+                        android:textColor="#444" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/category_box"
+                    android:gravity="center"
+                    android:text="마스크 팩"
+                    android:textColor="#444"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/category_box"
+                    android:gravity="center"
+                    android:text="바디케어"
+                    android:textColor="#444"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/category_box"
+                    android:gravity="center"
+                    android:text="베이스"
+                    android:textColor="#444"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/category_box"
+                    android:gravity="center"
+                    android:text="립메이크업"
+                    android:textColor="#444"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/category_box"
+                    android:gravity="center"
+                    android:text="아이메이크업"
+                    android:textColor="#444"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/category_box"
+                    android:gravity="center"
+                    android:text="네일"
+                    android:textColor="#444"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/category_box"
+                    android:gravity="center"
+                    android:text="향수"
+                    android:textColor="#444"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/category_box"
+                    android:gravity="center"
+                    android:text="헤어케어"
+                    android:textColor="#444"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/category_box"
+                    android:gravity="center"
+                    android:text="이너뷰티"
+                    android:textColor="#444"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/category_box"
+                    android:gravity="center"
+                    android:text="뷰티도구"
+                    android:textColor="#444"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/category_box"
+                    android:gravity="center"
+                    android:text="이너뷰티"
+                    android:textColor="#444"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/category_box"
+                    android:gravity="center"
+                    android:text="남성"
+                    android:textColor="#444"
+                    android:textSize="12sp" />
+
+            </GridLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="16dp" />
+
+            <!-- 추천 배너 1 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:text="> 맞춤 메이크업 제품 추천 보러가기"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:background="@drawable/rounded_orange_gradient"
+                android:layout_marginTop="12dp" />
+
+            <!-- 추천 배너 2 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:text="> 전문가가 추천하는 필승 화장 조합 보러가기"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:background="@drawable/rounded_orange_gradient"
+                android:layout_marginTop="12dp" />
+
+            <!-- 추천 배너 3 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:text="> 나에게 꼭 맞는 기초 루틴 추천 받기"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:background="@drawable/rounded_orange_gradient"
+                android:layout_marginTop="12dp" />
+
+            <View android:layout_width="match_parent" android:layout_height="24dp" />
+
+            <!-- 채팅 말풍선 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:paddingEnd="8dp">
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="?"
+                    android:textColor="#000000"
+                    android:background="@drawable/help_circle_background" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 하단 네비게이션 바 -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_nav_menu" />
+</RelativeLayout>
